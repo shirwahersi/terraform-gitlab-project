@@ -1,0 +1,27 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.3.0
+    hooks:
+      - id: no-commit-to-branch
+        args: [--branch, master]
+  - repo: https://github.com/antonbabenko/pre-commit-terraform.git
+    rev: v1.81.0
+    hooks:
+      - id: terraform_fmt
+  - repo: git@git.modulrfinance.io:modops/git-hooks.git
+    rev: v1.2.0
+    hooks:
+      - id: match-patterns
+        args: 
+        - -exclude_files
+        - ".external_modules/"
+      - id: terraform-validate
+        language_version: python3
+  - repo: https://github.com/bridgecrewio/checkov.git
+    rev: 2.3.347
+    hooks:
+      - id: checkov
+        args: 
+        - --quiet
+        - --download-external-modules
+        - "true"
