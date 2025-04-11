@@ -65,3 +65,47 @@ variable "auto_devops_enabled" {
   description = "(Optional) Set to true to enable Auto DevOps for the project."
   default     = false
 }
+
+variable "mirror_to_github" {
+  type        = bool
+  description = "(Optional) Set to true to mirror the project to GitHub."
+  default     = false
+}
+
+variable "github_mirror_username" {
+  type        = string
+  description = "(Optional) The GitHub username to use for mirroring."
+  default     = null
+}
+
+variable "github_mirror_token" {
+  type        = string
+  description = "(Optional) The GitHub token to use for mirroring."
+  default     = null
+  sensitive   = true
+}
+
+variable "github_mirror_branch_regex" {
+  type        = string
+  description = "(Optional) The regex to match branches to mirror to GitHub. Defaults to null."
+  default     = null
+}
+
+variable "github_mirror_homepage_url" {
+  type        = string
+  description = "(Optional) The homepage URL for the GitHub repository."
+  default     = null
+}
+
+variable "github_mirror_visibility" {
+  type        = string
+  description = "(Optional) The visibility of the GitHub repository. Valid values are `public`, `private`."
+  default     = "public"
+
+}
+
+variable "keep_divergent_refs" {
+  type        = bool
+  description = "(Optional) Set to true to keep divergent refs in the mirror."
+  default     = false
+}
